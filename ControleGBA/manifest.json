@@ -9,26 +9,24 @@
     "100x100": "icon.png"
   },
   
-  // CONFIGURAÇÕES OBRIGATÓRIAS DA TWITCH
   "anchor": "panel",
   "panel_height": 300,
   "permissions": [],
-  
   "action_types": ["send_to_websocket"],
   
-  // URLs ATUALIZADAS PARA GITHUB PAGES
+  // URLs ATUALIZADAS COM A PASTA ControleGBA/
   "config": {
-    "iframe_url": "https://natastream.github.io/controle-gba-twitch/config.html",
+    "iframe_url": "https://natastream.github.io/controle-gba-twitch/ControleGBA/config.html",
     "controller": "none"
   },
   
   "panel": {
-    "iframe_url": "https://natastream.github.io/controle-gba-twitch/panel.html",
+    "iframe_url": "https://natastream.github.io/controle-gba-twitch/ControleGBA/panel.html",
     "height": 300
   },
   
   "video_overlay": {
-    "iframe_url": "https://natastream.github.io/controle-gba-twitch/video_component.html",
+    "iframe_url": "https://natastream.github.io/controle-gba-twitch/ControleGBA/video_component.html",
     "height": 300,
     "width": 300
   }
