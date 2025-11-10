@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Controle GBA</title>
+    <style>
+        body { margin: 0; padding: 20px; background: #1f1f23; color: white; font-family: Arial, sans-serif; height: 700px; }
+        .gamepad-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0; }
+        .button { background: #6441a5; color: white; border: none; padding: 15px 10px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: bold; transition: all 0.2s; }
+        .button:hover { transform: scale(1.05); }
+        .button:active { transform: scale(0.95); }
+        .dpad-button { background: #333; }
+        .a-button { background: #00aa00; }
+        .b-button { background: #aa0000; }
+        .lr-button { background: #555; }
+        .menu-button { background: #ffaa00; color: black; }
+        .status { text-align: center; margin-top: 20px; padding: 10px; background: #2a2a2a; border-radius: 5px; font-size: 14px; }
+        h2 { text-align: center; color: #6441a5; margin-bottom: 10px; }
+        .section-title { text-align: center; color: #888; font-size: 12px; margin: 15px 0 5px 0; }
+        .pressed { transform: scale(0.9) !important; opacity: 0.8; }
+    </style>
+</head>
+<body>
+    <h2>🎮 Controle GBA</h2>
+    
+    <div class="section-title">DIRECIONAL</div>
+    <div class="gamepad-panel">
+        <button class="button dpad-button" onclick="pressButton('UP')">⬆️ UP</button>
+        <button class="button dpad-button" onclick="pressButton('DOWN')">⬇️ DOWN</button>
+        <button class="button dpad-button" onclick="pressButton('LEFT')">⬅️ LEFT</button>
+        <button class="button dpad-button" onclick="pressButton('RIGHT')">➡️ RIGHT</button>
+    </div>
+
+    <div class="section-title">AÇÕES</div>
+    <div class="gamepad-panel">
+        <button class="button a-button" onclick="pressButton('A')">A</button>
+        <button class="button b-button" onclick="pressButton('B')">B</button>
+    </div>
+
+    <div class="section-title">GATILHOS</div>
+    <div class="gamepad-panel">
+        <button class="button lr-button" onclick="pressButton('L')">L</button>
+        <button class="button lr-button" onclick="pressButton('R')">R</button>
+    </div>
+
+    <div class="section-title">MENU</div>
+    <div class="gamepad-panel">
+        <button class="button menu-button" onclick="pressButton('START')">START</button>
+        <button class="button menu-button" onclick="pressButton('SELECT')">SELECT</button>
+    </div>
+
+    <div class="status" id="status">✅ Extensão Carregada - Botões Prontos!</div>
+
+    <script>
+        function pressButton(buttonName) {
+            console.log('🎮 Botão pressionado:', buttonName);
+            event.target.classList.add('pressed');
+            setTimeout(() => event.target.classList.remove('pressed'), 200);
+            updateStatus(`✅ ${buttonName} pressionado!`);
+        }
+
+        function updateStatus(message) {
+            const status = document.getElementById('status');
+            if (status) {
+                status.textContent = message;
+                setTimeout(() => status.textContent = '✅ Extensão Carregada - Botões Prontos!', 2000);
+            }
+        }
+
+        if (window.Twitch && window.Twitch.ext) {
+            window.Twitch.ext.onAuthorized(function(auth) {
+                console.log('✅ Twitch Extension autorizada!');
+            });
+        }
+    </script>
+</body>
+</html>

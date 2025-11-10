@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Controle GBA Overlay</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            font-family: Arial, sans-serif;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        
+        .control-overlay {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(31, 31, 35, 0.95);
+            border: 2px solid #6441a5;
+            border-radius: 10px;
+            padding: 10px;
+            width: 200px;
+            z-index: 99999;
+            color: white;
+        }
+        
+        .gamepad-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5px;
+            margin: 10px 0;
+        }
+        
+        .button {
+            background: #6441a5;
+            color: white;
+            border: none;
+            padding: 8px 5px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+            transition: all 0.2s;
+        }
+        
+        .button:hover { transform: scale(1.05); }
+        .button:active { transform: scale(0.95); }
+        
+        .dpad-button { background: #333; }
+        .a-button { background: #00aa00; }
+        .b-button { background: #aa0000; }
+        .lr-button { background: #555; }
+        .menu-button { background: #ffaa00; color: black; }
+        
+        .pressed {
+            transform: scale(0.9) !important;
+            opacity: 0.8;
+        }
+        
+        h3 {
+            text-align: center;
+            color: #6441a5;
+            margin: 0 0 5px 0;
+            font-size: 14px;
+        }
+        
+        .section-title {
+            text-align: center;
+            color: #888;
+            font-size: 9px;
+            margin: 8px 0 2px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="control-overlay">
+        <h3>🎮 GBA Controls</h3>
+        
+        <div class="section-title">DIRECIONAL</div>
+        <div class="gamepad-grid">
+            <button class="button dpad-button" onclick="pressButton('UP')">⬆️</button>
+            <button class="button dpad-button" onclick="pressButton('DOWN')">⬇️</button>
+            <button class="button dpad-button" onclick="pressButton('LEFT')">⬅️</button>
+            <button class="button dpad-button" onclick="pressButton('RIGHT')">➡️</button>
+        </div>
+
+        <div class="section-title">AÇÕES</div>
+        <div class="gamepad-grid">
+            <button class="button a-button" onclick="pressButton('A')">A</button>
+            <button class="button b-button" onclick="pressButton('B')">B</button>
+        </div>
+
+        <div class="section-title">GATILHOS</div>
+        <div class="gamepad-grid">
+            <button class="button lr-button" onclick="pressButton('L')">L</button>
+            <button class="button lr-button" onclick="pressButton('R')">R</button>
+        </div>
+
+        <div class="section-title">MENU</div>
+        <div class="gamepad-grid">
+            <button class="button menu-button" onclick="pressButton('START')">START</button>
+            <button class="button menu-button" onclick="pressButton('SELECT')">SELECT</button>
+        </div>
+    </div>
+
+    <script>
+        function pressButton(buttonName) {
+            console.log('🎮 Video Component - Botão:', buttonName);
+            
+            // Efeito visual
+            event.target.classList.add('pressed');
+            setTimeout(() => {
+                event.target.classList.remove('pressed');
+            }, 200);
+            
+            // Aqui você pode adicionar outras funcionalidades depois
+        }
+
+        // Twitch Extension básica - Video Component
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎮 Video Component carregado!');
+            
+            if (window.Twitch && window.Twitch.ext) {
+                window.Twitch.ext.onAuthorized(function(auth) {
+                    console.log('✅ Video Component - Twitch autorizada!');
+                });
+                
+                window.Twitch.ext.listen('broadcast', function(target, contentType, message) {
+                    console.log('📡 Video Component - Mensagem:', message);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

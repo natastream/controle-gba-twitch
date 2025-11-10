@@ -1,0 +1,35 @@
+{
+  "version": "1.0.0",
+  "name": "Controle GBA",
+  "description": "Controles gamepad para Streamer.bot",
+  "author_name": "Natanaelsom",
+  "author_link": "https://twitch.tv/natanaelsom",
+  "icon": "icon.png",
+  "icons": {
+    "100x100": "icon.png"
+  },
+  
+  // CONFIGURAÇÕES OBRIGATÓRIAS DA TWITCH
+  "anchor": "panel",
+  "panel_height": 300,
+  "permissions": [],
+  
+  "action_types": ["send_to_websocket"],
+  
+  // URLs DOS COMPONENTES
+  "config": {
+    "iframe_url": "https://exquisite-rolypoly-ebd5a8.netlify.app/config.html",
+    "controller": "none"
+  },
+  
+  "panel": {
+    "iframe_url": "https://exquisite-rolypoly-ebd5a8.netlify.app/panel.html",
+    "height": 300
+  },
+  
+  "video_overlay": {
+    "iframe_url": "https://exquisite-rolypoly-ebd5a8.netlify.app/video_component.html",
+    "height": 300,
+    "width": 300
+  }
+}
