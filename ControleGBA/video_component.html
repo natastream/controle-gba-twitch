@@ -2,132 +2,107 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Controle GBA Overlay</title>
+    <title>Controle GBA</title>
     <style>
-        body {
-            margin: 0;
-            padding: 0;
-            background: rgba(0, 0, 0, 0.8) !important; /* FUNDO VISÍVEL */
-            font-family: Arial, sans-serif;
-            width: 100%;
-            height: 100%;
-            overflow: visible;
+        /* RESET AGGRESSIVO - FORÇAR VISIBILIDADE */
+        body, html {
+            margin: 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            background: #FF0000 !important; /* VERMELHO FORTE para teste */
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
         
-        .control-overlay {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #1a1a1a !important;
-            border: 3px solid #6441a5 !important;
-            border-radius: 15px;
-            padding: 15px;
-            width: 250px;
-            color: white;
-            box-shadow: 0 0 20px rgba(100, 65, 165, 0.7);
-            z-index: 10000;
+        .control-container {
+            position: fixed !important;
+            top: 50px !important;
+            right: 50px !important;
+            background: #000000 !important;
+            border: 5px solid #00FF00 !important; /* VERDE FLUORESCENTE */
+            border-radius: 10px;
+            padding: 20px;
+            width: 300px;
+            color: #FFFFFF !important;
+            z-index: 2147483647 !important; /* Máximo possível */
+            box-shadow: 0 0 30px #FF0000 !important;
         }
         
         .gamepad-grid {
-            display: grid;
+            display: grid !important;
             grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin: 12px 0;
+            gap: 10px;
+            margin: 15px 0;
         }
         
         .button {
-            background: #6441a5;
-            color: white;
-            border: none;
-            padding: 12px 8px;
+            background: #6441a5 !important;
+            color: white !important;
+            border: 2px solid #FFFFFF !important;
+            padding: 15px 10px;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 14px;
-            font-weight: bold;
-            transition: all 0.2s;
-        }
-        
-        .button:hover { 
-            transform: scale(1.05); 
-            background: #7d5bbe;
-        }
-        
-        .dpad-button { background: #333; }
-        .a-button { background: #00aa00; }
-        .b-button { background: #aa0000; }
-        .lr-button { background: #555; }
-        .menu-button { background: #ffaa00; color: black; }
-        
-        h3 {
-            text-align: center;
-            color: #6441a5;
-            margin: 0 0 10px 0;
             font-size: 16px;
-            text-shadow: 0 0 10px rgba(100, 65, 165, 0.5);
-        }
-        
-        .section-title {
-            text-align: center;
-            color: #cccccc;
-            font-size: 11px;
-            margin: 10px 0 3px 0;
             font-weight: bold;
         }
-
-        /* Garantir que é visível */
-        * {
-            box-sizing: border-box;
+        
+        h2 {
+            text-align: center;
+            color: #00FF00 !important; /* VERDE */
+            margin: 0 0 15px 0;
+            font-size: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="control-overlay">
-        <h3>🎮 CONTROLE GBA</h3>
+    <!-- CONTEÚDO SUPER VISÍVEL -->
+    <div class="control-container">
+        <h2>🎮 CONTROLE GBA</h2>
         
-        <div class="section-title">DIRECIONAL</div>
         <div class="gamepad-grid">
-            <button class="button dpad-button" onclick="pressButton('UP')">⬆️ UP</button>
-            <button class="button dpad-button" onclick="pressButton('DOWN')">⬇️ DOWN</button>
-            <button class="button dpad-button" onclick="pressButton('LEFT')">⬅️ LEFT</button>
-            <button class="button dpad-button" onclick="pressButton('RIGHT')">➡️ RIGHT</button>
+            <button class="button" onclick="pressButton('UP')">⬆️ UP</button>
+            <button class="button" onclick="pressButton('DOWN')">⬇️ DOWN</button>
+            <button class="button" onclick="pressButton('LEFT')">⬅️ LEFT</button>
+            <button class="button" onclick="pressButton('RIGHT')">➡️ RIGHT</button>
         </div>
 
-        <div class="section-title">BOTÕES</div>
         <div class="gamepad-grid">
-            <button class="button a-button" onclick="pressButton('A')">A</button>
-            <button class="button b-button" onclick="pressButton('B')">B</button>
+            <button class="button" onclick="pressButton('A')" style="background: #00AA00 !important;">A</button>
+            <button class="button" onclick="pressButton('B')" style="background: #AA0000 !important;">B</button>
         </div>
 
-        <div class="section-title">GATILHOS</div>
         <div class="gamepad-grid">
-            <button class="button lr-button" onclick="pressButton('L')">L</button>
-            <button class="button lr-button" onclick="pressButton('R')">R</button>
+            <button class="button" onclick="pressButton('L')">L</button>
+            <button class="button" onclick="pressButton('R')">R</button>
         </div>
 
-        <div class="section-title">MENU</div>
         <div class="gamepad-grid">
-            <button class="button menu-button" onclick="pressButton('START')">START</button>
-            <button class="button menu-button" onclick="pressButton('SELECT')">SELECT</button>
+            <button class="button" onclick="pressButton('START')" style="background: #FFAA00 !important; color: #000 !important;">START</button>
+            <button class="button" onclick="pressButton('SELECT')" style="background: #FFAA00 !important; color: #000 !important;">SELECT</button>
         </div>
     </div>
 
     <script>
         function pressButton(buttonName) {
-            console.log('🎮 Video Component - Botão pressionado:', buttonName);
-            // Efeito visual
-            event.target.style.transform = 'scale(0.9)';
+            console.log('🎮 BOTÃO PRESSIONADO:', buttonName);
+            // Mudar cor temporariamente para confirmar
+            event.target.style.background = '#FFFF00 !important';
+            event.target.style.color = '#000000 !important';
             setTimeout(() => {
-                event.target.style.transform = 'scale(1)';
+                event.target.style.background = '';
+                event.target.style.color = '';
             }, 200);
         }
 
-        console.log('✅ CONTROLE GBA - Video Component CARREGADO E VISÍVEL!');
+        console.log('🚨 CONTROLE GBA - EXTENSÃO VISÍVEL CARREGADA!');
+        console.log('🎯 Se você não vê um painel VERMELHO/VERDE, há bloqueio de CSS');
         
-        if (window.Twitch && window.Twitch.ext) {
-            window.Twitch.ext.onAuthorized(function(auth) {
-                console.log('✅ Twitch autorizada!');
-            });
-        }
+        // Forçar redesenho
+        setTimeout(() => {
+            document.body.style.display = 'block';
+        }, 100);
     </script>
 </body>
 </html>
