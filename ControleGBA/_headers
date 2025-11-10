@@ -1,4 +1,0 @@
-/*
-  X-Frame-Options: ALLOW-FROM https://www.twitch.tv
-  Content-Security-Policy: default-src 'self' https://exquisite-rolypoly-ebd5a8.netlify.app; script-src 'self' 'unsafe-inline' https://extension-files.twitch.tv; style-src 'self' 'unsafe-inline'; connect-src ws://192.168.15.2:8080; frame-ancestors https://supervisor.ext-twitch.tv https://www.twitch.tv;
-  Access-Control-Allow-Origin: *
