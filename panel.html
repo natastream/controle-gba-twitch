@@ -12,14 +12,12 @@
             font-family: Arial;
             height: 400px;
         }
-        
         .compact-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 8px;
             margin: 10px 0;
         }
-        
         .btn {
             background: #6441a5;
             color: white;
@@ -30,20 +28,17 @@
             font-size: 12px;
             font-weight: bold;
         }
-        
         .btn-dpad { background: #333; }
         .btn-a { background: #00aa00; }
         .btn-b { background: #aa0000; }
         .btn-lr { background: #555; }
         .btn-menu { background: #ffaa00; color: black; }
-        
         .title {
             text-align: center;
             color: #6441a5;
             margin: 0 0 15px 0;
             font-size: 16px;
         }
-        
         .section {
             text-align: center;
             color: #888;
@@ -81,15 +76,7 @@
         <button class="btn btn-menu" onclick="pressButton('SELECT')">SELECT</button>
     </div>
 
-    <script>
-        function pressButton(buttonName) {
-            console.log('🎮 Botão pressionado:', buttonName);
-            // Efeito visual
-            event.target.style.opacity = '0.7';
-            setTimeout(() => event.target.style.opacity = '1', 200);
-        }
-        
-        console.log('✅ Panel GBA Carregado!');
-    </script>
+    <!-- JavaScript externo para evitar CSP -->
+    <script src="panel.js"></script>
 </body>
 </html>
