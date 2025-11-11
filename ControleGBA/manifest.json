@@ -1,35 +1,27 @@
 {
-  "version": "1.0.1",
+  "version": "2.0.0",
   "name": "Controle GBA",
   "description": "Controles gamepad para Streamer.bot",
   "author_name": "Natanaelsom",
   "author_link": "https://twitch.tv/natanaelsom",
-  "icon": "icon.png",
-  "icons": {
-    "100x100": "icon.png"
-  },
   
-  // CONFIGURAÇÕES OBRIGATÓRIAS DA TWITCH
   "anchor": "panel",
-  "panel_height": 300,
+  "panel_height": 400,
   "permissions": [],
-  
-  "action_types": ["send_to_websocket"],
-  
-  // URLs DOS COMPONENTES
-  "config": {
-    "iframe_url": "https://natastream.github.io/controle-gba-twitch/ControleGBA/config.html",
-    "controller": "none"
-  },
   
   "panel": {
     "iframe_url": "https://natastream.github.io/controle-gba-twitch/ControleGBA/panel.html",
-    "height": 300
+    "height": 400
   },
   
   "video_overlay": {
-    "iframe_url": "https://natastream.github.io/controle-gba-twitch/ControleGBA/video_component.html",
+    "iframe_url": "https://natastream.github.io/controle-gba-twitch/ControleGBA/video_component.html", 
     "height": 300,
     "width": 300
+  },
+  
+  "config": {
+    "iframe_url": "https://natastream.github.io/controle-gba-twitch/ControleGBA/config.html",
+    "controller": "none"
   }
 }
